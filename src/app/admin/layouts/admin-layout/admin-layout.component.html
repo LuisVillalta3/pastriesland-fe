@@ -1,1 +1,14 @@
-<router-outlet />
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="side" [(opened)]="isSidenavOpen" class="sidenav">
+    <app-admin-sidenav />
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <app-admin-toolbar (toggleSidenav)="toggleSidenav()"></app-admin-toolbar>
+
+    <div class="content">
+      {{isSidenavOpen ? 'si' : 'no'}}
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
