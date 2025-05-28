@@ -8,8 +8,8 @@ import {NgIf} from '@angular/common';
 import {MatIconModule} from '@angular/material/icon';
 import {AuthService} from '@/app/admin/modules/auth/auth.service';
 import {NotificationService} from '@/app/core/services/notification.service';
-import {CookieService} from 'ngx-cookie-service';
 import {Router} from '@angular/router';
+import {CookiesService} from '@/app/services/cookies.service';
 
 @Component({
   selector: 'app-login',
@@ -33,7 +33,7 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder, private authService: AuthService,
     private notification: NotificationService,
-    private cookieService: CookieService,
+    private cookieService: CookiesService,
     private router: Router,
   ) {
     this.loginForm = this.fb.group({
@@ -48,9 +48,7 @@ export class LoginComponent {
 
       this.authService.login(email, password).subscribe({
         next: async (res) => {
-          const date = new Date();
-          date.setHours(date.getHours() + 1)
-          this.cookieService.set('accessToken', res.accessToken, date)
+          this.cookieService.saveToken(res.accessToken, 'admin')
           this.notification.show('Login exitoso')
           await this.router.navigate(['admin/categories'])
         },
