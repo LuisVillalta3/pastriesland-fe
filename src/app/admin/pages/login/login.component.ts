@@ -43,20 +43,20 @@ export class LoginComponent {
   }
 
   onSubmit(): void {
-    if (this.loginForm.valid) {
-      const { email, password } = this.loginForm.value;
+    if (!this.loginForm.valid) return;
 
-      this.authService.login(email, password).subscribe({
-        next: async (res) => {
-          this.cookieService.saveToken(res.accessToken, 'admin')
-          this.notification.show('Login exitoso')
-          await this.router.navigate(['admin/categories'])
-        },
-        error: () => {
-          this.notification.show("Email o contraseñas invalidos", "error")
-        }
-      })
-    }
+    const { email, password } = this.loginForm.value;
+
+    this.authService.login(email, password).subscribe({
+      next: async (res) => {
+        this.cookieService.saveToken(res.accessToken, 'admin')
+        this.notification.show('Login exitoso')
+        await this.router.navigate(['admin/categories'])
+      },
+      error: () => {
+        this.notification.show("Email o contraseñas invalidos", "error")
+      }
+    })
   }
 
   get emailErrors() {
