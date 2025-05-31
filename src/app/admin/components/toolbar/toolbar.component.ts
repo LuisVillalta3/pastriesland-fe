@@ -25,6 +25,6 @@ export class ToolbarComponent {
 
   async signOut() {
     this.cookieService.deleteToken('admin')
-    await this.router.navigate(['/admin/login'])
+    await this.router.navigate(['admin/login'])
   }
 }

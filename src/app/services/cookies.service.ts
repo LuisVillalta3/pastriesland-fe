@@ -4,7 +4,7 @@ import {CookieService} from 'ngx-cookie-service';
 export const ADMIN_COOKIE_KEY = 'adminAccessToken'
 export const COOKIE_KEY = 'accessToken'
 
-type keyType = 'admin' | 'client'
+type KeyType = 'admin' | 'client'
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ export class CookiesService {
    * @param key
    * @param duration - In Minutes
    */
-  saveToken(token: string, key: keyType, duration: number = 15) {
+  saveToken(token: string, key: KeyType, duration: number = 60) {
     const date = new Date();
     date.setMinutes(date.getMinutes() + duration)
 
@@ -30,7 +30,7 @@ export class CookiesService {
     )
   }
 
-  deleteToken(key: keyType) {
+  deleteToken(key: KeyType) {
     this.cookieService.delete(this.getTokenKey(key))
   }
 
@@ -38,7 +38,21 @@ export class CookiesService {
     this.cookieService.deleteAll()
   }
 
-  private getTokenKey(key: keyType) {
+  getToken(key: KeyType) {
+    return this.renewSessionIfExists(key)
+  }
+
+  private renewSessionIfExists(key: KeyType) {
+    const session = this.cookieService.get(this.getTokenKey(key))
+
+    if (session) {
+      this.saveToken(session, key)
+    }
+
+    return session
+  }
+
+  private getTokenKey(key: KeyType) {
     return key == 'client' ? COOKIE_KEY : ADMIN_COOKIE_KEY
   }
 }

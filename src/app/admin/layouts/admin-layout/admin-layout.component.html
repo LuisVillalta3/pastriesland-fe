@@ -7,8 +7,15 @@
     <app-admin-toolbar (toggleSidenav)="toggleSidenav()"></app-admin-toolbar>
 
     <div class="content">
-      {{isSidenavOpen ? 'si' : 'no'}}
-      <router-outlet></router-outlet>
+      <app-admin-breadcrumb
+        [title]="title"
+        [navItems]="breadcrumbsList"
+        [link]="creationLink"
+      />
+
+      <div class="module-content">
+        <router-outlet />
+      </div>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

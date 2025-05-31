@@ -13,7 +13,7 @@ export class NotificationService {
       duration: 3000,
       horizontalPosition: 'right',
       verticalPosition: 'top',
-      panelClass: [`snack-${type}`]
+      panelClass: [`snack-${type}`, 'custom-snackbar-position']
     });
   }
 }
