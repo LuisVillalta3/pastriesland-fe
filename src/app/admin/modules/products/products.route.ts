@@ -1,6 +1,6 @@
 import {Routes} from '@angular/router';
-import {ListComponent} from './pages/list/list.component';
-import {FormComponent} from './pages/form/form.component';
+import {ListComponent} from '@/app/admin/modules/products/pages/list/list.component';
+import {FormComponent} from '@admin/modules/products/pages/form/form.component';
 
 export const routes: Routes = [
   { path: '', component: ListComponent },

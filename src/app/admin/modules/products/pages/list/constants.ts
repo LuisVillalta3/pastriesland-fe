@@ -1,18 +1,18 @@
+import {ProductEntity} from '@entities/product.entity';
 import type {ColDef} from 'ag-grid-community';
-import {TableActionCellComponent} from '@admin/components/table-action-cell/table-action-cell.component';
-import {CategoryEntity} from '@entities/category.entity';
 import {dateFormatter} from '@admin/util/date-formatter.util';
+import {TableActionCellComponent} from '@admin/components/table-action-cell/table-action-cell.component';
 
-export type CategoryWithActions = CategoryEntity & { withActions?: boolean };
+export type ProductWithActions = ProductEntity & { withActions?: boolean };
 
-export const CATEGORY_COLUMN_DEFS: ColDef<CategoryWithActions>[] = [
+export const PRODUCT_COLUMN_DEFS: ColDef<ProductWithActions>[] = [
   { field: "id" },
   {
     field: "name",
     headerName: "Nombre",
   },
   {
-    field: "isActive",
+    field: "active",
     headerName: "Activo"
   },
   {

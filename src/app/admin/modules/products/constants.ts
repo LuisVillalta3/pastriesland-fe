@@ -1,19 +1,19 @@
-import {BreadcrumbItem} from '@admin/components/breadcrumb/breadcrumb.component';
+import {BreadcrumbItem} from '@/app/admin/components/breadcrumb/breadcrumb.component';
 
-export const categoryTitle = 'Categorías'
+export const productTitle = 'Productos'
 
 export const defaultBcList: BreadcrumbItem[] = [
-  { title: categoryTitle, route: 'categories' },
+  { title: productTitle, route: 'products' },
 ]
 
 export const createBcList: BreadcrumbItem[] = [
   ...defaultBcList,
-  { title: 'Crear categoría', route: '' },
+  { title: 'Crear Producto', route: '' },
 ]
 
 export const editBcList = (categoryName: string): BreadcrumbItem[] =>
   [
     ...defaultBcList,
     {title: categoryName, route: '' },
-    {title: 'Editar categoría', route: ''},
+    {title: 'Editar Producto', route: ''},
   ]
