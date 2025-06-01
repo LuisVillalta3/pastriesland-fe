@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
@@ -22,4 +23,69 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 .snack-info .mdc-snackbar__surface.mat-mdc-snackbar-surface {
   background-color: #2196f3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.font-playfair {
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.font-montserrat,
+p {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.content-container {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.pink-btn {
+  background: #F75590;
+  display: inline-block;
+  padding: 10px 1.5rem;
+  color: #FFF5E1 !important;
+  border-radius: 20px;
+  text-decoration: none;
+  border: 2px solid #F75590;
+  font-weight: 500;
+  font-family: "Playfair Display", serif;
+  cursor: pointer;
+  transition: .2s all ease;
+
+  &:hover {
+    background: #9747FF;
+    transform: scale(1.03);
+    border-color: #9747FF;
+  }
+}
+
+.mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused
+.mdc-notched-outline__leading,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused
+.mdc-notched-outline__notch,
+.mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused
+.mdc-notched-outline__trailing {
+  border-color: #F75590 !important;
+}
+
+.web-title {
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  text-decoration: none;
+  font-style: normal;
+  font-size: 1.5rem;
+  color: #0D1821;
 }
