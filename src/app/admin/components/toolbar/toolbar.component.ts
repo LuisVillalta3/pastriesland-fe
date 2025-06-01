@@ -23,8 +23,10 @@ export class ToolbarComponent {
     this.toggleSidenav.emit();
   }
 
-  async signOut() {
+  signOut() {
     this.cookieService.deleteToken('admin')
-    await this.router.navigate(['admin/login'])
+    setTimeout(async () => {
+      await this.router.navigate(['admin/login'])
+    })
   }
 }
