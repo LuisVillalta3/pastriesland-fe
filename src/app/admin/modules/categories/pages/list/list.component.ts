@@ -1,16 +1,15 @@
 import {Component, inject, OnInit} from '@angular/core';
 import type {GridApi, GridOptions, GridReadyEvent} from 'ag-grid-community';
-import {BreadcrumbItem} from '@/app/admin/components/breadcrumb/breadcrumb.component';
-import {TableComponent} from '@/app/admin/components/table/table.component';
-import {PageContextService} from '@/app/admin/services/page-context.service';
-import {createGridOptions} from '@/app/admin/util/create-grid-options.util';
-import {CATEGORY_COLUMN_DEFS } from '@/app/admin/modules/categories/pages/list/constants';
-import {CategoryService} from '@/app/admin/modules/categories/category.service';
-import {NotificationService} from '@/app/core/services/notification.service';
-import {categoryTitle, createBcList, defaultBcList} from '@/app/admin/modules/categories/constants';
+import {TableComponent} from '@admin/components/table/table.component';
+import {PageContextService} from '@admin/services/page-context.service';
+import {createGridOptions} from '@admin/util/create-grid-options.util';
+import {CATEGORY_COLUMN_DEFS } from '@admin/modules/categories/pages/list/constants';
+import {CategoryService} from '@admin/modules/categories/category.service';
+import {NotificationService} from '@core/services/notification.service';
+import {categoryTitle, defaultBcList} from '@admin/modules/categories/constants';
 import {Router} from '@angular/router';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
-import {DeleteDialogComponent} from '@/app/admin/components/confirm-dialog/delete-dialog.component';
+import {DeleteDialogComponent} from '@admin/components/confirm-dialog/delete-dialog.component';
 
 
 @Component({
@@ -20,13 +19,12 @@ import {DeleteDialogComponent} from '@/app/admin/components/confirm-dialog/delet
   styleUrl: './list.component.scss'
 })
 export class ListComponent implements OnInit {
-  readonly dialog = inject(MatDialog);
-
   constructor(
     private pageContext: PageContextService,
     private readonly categoryService: CategoryService,
     private notification: NotificationService,
     private router: Router,
+    private dialog: MatDialog,
   ) {}
 
   gridOptions: GridOptions<any> = {}
@@ -46,10 +44,7 @@ export class ListComponent implements OnInit {
       columnDefs: CATEGORY_COLUMN_DEFS,
       onGridReady: this.onGridReady.bind(this),
       loading: this.loading,
-      context: {
-        componentParent: this
-      }
-    })
+    }, this)
   }
 
   onGridReady(params: GridReadyEvent) {
@@ -91,6 +86,7 @@ export class ListComponent implements OnInit {
     this.categoryService.delete(id).subscribe({
       next: () => {
         this.loadData()
+        this.notification.show("Category borrada correctamente")
       }
     })
   }
