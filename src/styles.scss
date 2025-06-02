@@ -89,3 +89,67 @@ p {
   font-size: 1.5rem;
   color: #0D1821;
 }
+
+#banner {
+  background: #BFF1F0;
+  position: relative;
+  margin-top: -100px;
+  min-height: 80vh;
+  padding: 125px 0;
+
+  @media (min-width: 1024px) {
+    min-height: 60vh;
+    padding: 150px 0;
+  }
+
+  @media (min-width: 1224px) {
+    min-height: 75vh;
+    padding: 250px 0;
+  }
+
+  img {
+    max-width: 100%;
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+
+    @media (min-width: 1024px) {
+      width: 60%;
+      max-width: 1050px;
+    }
+  }
+
+  h2 {
+    font-family: "Playfair Display", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 2.5rem;
+    line-height: .8;
+    position: relative;
+    z-index: 2;
+    margin: 0;
+
+    span {
+      color: #F75590;
+      font-size: 1.6em;
+      display: block;
+    }
+  }
+
+  p {
+    margin: 2rem 0;
+    font-size: 22px;
+    font-family: "Montserrat", sans-serif;
+    position: relative;
+    z-index: 2;
+
+    @media (min-width: 1024px) {
+      max-width: 450px;
+    }
+  }
+}
+
