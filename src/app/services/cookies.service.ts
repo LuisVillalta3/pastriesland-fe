@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {CookieService} from 'ngx-cookie-service';
+import {BehaviorSubject} from 'rxjs';
 
 export const ADMIN_COOKIE_KEY = 'adminAccessToken'
 export const COOKIE_KEY = 'accessToken'
@@ -11,7 +12,13 @@ type KeyType = 'admin' | 'client'
 })
 export class CookiesService {
 
-  constructor(private cookieService: CookieService) { }
+
+  private clientTokenSubject = new BehaviorSubject<string|null>(null)
+  clientToken$ = this.clientTokenSubject.asObservable()
+
+  constructor(private cookieService: CookieService) {
+    this.clientTokenSubject.next(this.getToken('client'))
+  }
 
   /**
    *
@@ -28,14 +35,18 @@ export class CookiesService {
       token,
       date,
     )
+
+    this.clientTokenSubject.next(token)
   }
 
   deleteToken(key: KeyType) {
     this.cookieService.delete(this.getTokenKey(key))
+    this.clientTokenSubject.next(null)
   }
 
   deleteAllTokens() {
     this.cookieService.deleteAll()
+    this.clientTokenSubject.next(null)
   }
 
   getToken(key: KeyType) {

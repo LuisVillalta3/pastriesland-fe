@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {RouterModule, RouterOutlet} from '@angular/router';
 import {ToolbarComponent} from '@/app/admin/components/toolbar/toolbar.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
