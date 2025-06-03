@@ -22,6 +22,11 @@ export const routes: Routes = [
         loadChildren: () =>
           import('./modules/products/products.module').then(m => m.ProductsModule)
       },
+      {
+        path: 'contacts',
+        loadChildren: () =>
+          import('./modules/contacts/contacts.module').then(m => m.ContactsModule)
+      }
     ]
   },
   {

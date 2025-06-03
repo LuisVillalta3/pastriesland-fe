@@ -6,10 +6,9 @@ import {MatInput, MatInputModule, MatLabel} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {LoginModalComponent} from '@client/components/login-modal/login-modal.component';
 import {NgIf} from '@angular/common';
-import {RegisterService} from '@client/components/register-modal/register.service';
-import {LoginService} from '@client/components/login-modal/login.service';
 import {NotificationService} from '@services/notification.service';
 import {CookiesService} from '@services/cookies.service';
+import {AuthService} from '@client/services/auth.service';
 
 @Component({
   selector: 'app-register-modal',
@@ -33,8 +32,7 @@ export class RegisterModalComponent {
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<RegisterModalComponent>,
     private dialog: MatDialog,
-    private registerService: RegisterService,
-    private loginService: LoginService,
+    private authService: AuthService,
     private notification: NotificationService,
     private cookieService: CookiesService,
   ) {
@@ -63,7 +61,7 @@ export class RegisterModalComponent {
 
     const { name, lastName, password, email } = this.loginForm.value
 
-    this.registerService.register({
+    this.authService.register({
       email, password, name, lastName
     }).subscribe({
       next: (res) => this.login(email, password),
@@ -71,7 +69,7 @@ export class RegisterModalComponent {
   }
 
   login(email: string, password: string) {
-    this.loginService.login(email, password).subscribe({
+    this.authService.login(email, password).subscribe({
       next: (res) => {
         this.cookieService.saveToken(res.accessToken, 'client')
         this.notification.show('Usuario registrado correctamente')
@@ -140,6 +138,4 @@ export class RegisterModalComponent {
 
     return null;
   }
-
-  protected readonly name = name;
 }

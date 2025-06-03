@@ -6,9 +6,9 @@ import {MatIconButton} from '@angular/material/button';
 import {NgIf} from '@angular/common';
 import {MatIconModule} from '@angular/material/icon';
 import {RegisterModalComponent} from '@client/components/register-modal/register-modal.component';
-import {LoginService} from '@client/components/login-modal/login.service';
 import {NotificationService} from '@services/notification.service';
 import {CookiesService} from '@services/cookies.service';
+import {AuthService} from '@client/services/auth.service';
 
 @Component({
   selector: 'app-login-modal',
@@ -32,7 +32,7 @@ export class LoginModalComponent {
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<LoginModalComponent>,
     private dialog: MatDialog,
-    private loginService: LoginService,
+    private authService: AuthService,
     private notification: NotificationService,
     private cookieService: CookiesService,
   ) {
@@ -47,7 +47,7 @@ export class LoginModalComponent {
 
     const { password, email } = this.loginForm.value
 
-    this.loginService.login(email, password).subscribe({
+    this.authService.login(email, password).subscribe({
       next: (res) => {
         this.cookieService.saveToken(res.accessToken, 'client')
         this.notification.show('Usuario loggeado correctamente')
