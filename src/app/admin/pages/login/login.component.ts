@@ -7,7 +7,7 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {NgIf} from '@angular/common';
 import {MatIconModule} from '@angular/material/icon';
 import {AuthService} from '@/app/admin/modules/auth/auth.service';
-import {NotificationService} from '@/app/core/services/notification.service';
+import {NotificationService} from '@services/notification.service';
 import {Router} from '@angular/router';
 import {CookiesService} from '@/app/services/cookies.service';
 

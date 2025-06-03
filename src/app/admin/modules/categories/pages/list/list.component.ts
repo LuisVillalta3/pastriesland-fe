@@ -5,7 +5,7 @@ import {PageContextService} from '@admin/services/page-context.service';
 import {createGridOptions} from '@admin/util/create-grid-options.util';
 import {CATEGORY_COLUMN_DEFS } from '@admin/modules/categories/pages/list/constants';
 import {CategoryService} from '@admin/modules/categories/category.service';
-import {NotificationService} from '@core/services/notification.service';
+import {NotificationService} from '@services/notification.service';
 import {categoryTitle, defaultBcList} from '@admin/modules/categories/constants';
 import {Router} from '@angular/router';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
@@ -82,7 +82,6 @@ export class ListComponent implements OnInit {
   }
 
   deleteCategory(id: string) {
-    console.log(id)
     this.categoryService.delete(id).subscribe({
       next: () => {
         this.loadData()
