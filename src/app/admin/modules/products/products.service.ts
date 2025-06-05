@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {AdminHttpClientService} from '@services/admin-http-client.service';
-import {HttpResponse} from '@responses/http.response';
+import {HttpResponse} from '@app/types/http.response';
 import {ProductEntity} from '@entities/product.entity';
 import {CategoryEntity} from '@entities/category.entity';
 
@@ -14,7 +14,8 @@ type ProductDto = {
   isComplement: boolean,
   maxPortions: number,
   minPortions: number,
-  units: number
+  units: number,
+  isOutstanding: boolean,
 }
 
 @Injectable({
@@ -34,6 +35,7 @@ export class ProductsService {
       maxPortions,
       minPortions,
       units,
+      isOutstanding,
     }: ProductDto
   ) {
     return this.adminHttpClient.post<HttpResponse<ProductEntity>>(URL, {
@@ -44,6 +46,7 @@ export class ProductsService {
       isComplement,
       maxPortions,
       minPortions,
+      isOutstanding,
       units
     })
   }
@@ -59,11 +62,13 @@ export class ProductsService {
       maxPortions,
       minPortions,
       units,
+      isOutstanding,
     }: ProductDto
   ) {
     return this.adminHttpClient.put<HttpResponse<ProductEntity>>(`${URL}/${id}`, {
       name,
       active,
+      isOutstanding,
       basePrice,
       categoriesIDs: categoriesIds,
       isComplement,

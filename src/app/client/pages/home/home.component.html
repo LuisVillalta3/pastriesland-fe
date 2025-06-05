@@ -13,10 +13,16 @@
 <section class="content-container" id="productos-destacados">
   <h1>Nuestros <strong>destacados</strong></h1>
   <p>Sabores que enamoran, diseños que sorprenden</p>
+  <section class="product-grid">
+    <app-product-card
+      *ngFor="let product of products"
+      [product]="product"
+    />
+  </section>
   <span>* El precio puede variar en función del sabor o el diseño seleccionado</span>
   <p class="tagline">¿No encuentras lo que buscas?</p>
   <p class="cta-line">Descubre más opciones en nuestro <strong>Catálogo Completo</strong></p>
-  <a class="pink-btn">Explorar Catálogo</a>
+  <a routerLink="/productos" class="pink-btn">Explorar Catálogo</a>
 </section>
 
 <app-contact-form />

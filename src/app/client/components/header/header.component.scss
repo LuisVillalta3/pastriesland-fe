@@ -8,7 +8,7 @@ header {
   left: 0;
   width: 100%;
   transition: all .2s ease;
-  z-index: 90;
+  z-index: 110;
 
   &.container-nav {
     background: white;
@@ -175,7 +175,7 @@ nav {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 2;
+  z-index: 100;
   transition: all 0.4s ease;
   transform: scaleY(0);
   transform-origin: bottom;

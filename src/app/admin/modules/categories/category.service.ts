@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {AdminHttpClientService} from '@services/admin-http-client.service';
 import {CategoryEntity} from '@entities/category.entity';
-import {HttpResponse} from '@responses/http.response';
+import {HttpResponse} from '@app/types/http.response';
 
 const URL = 'admin/categories'
 
