@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {AdminHttpClientService} from '@services/admin-http-client.service';
-import {HttpResponse} from '@responses/http.response';
+import {HttpResponse} from '@app/types/http.response';
 import {ContactEntity} from '@entities/contact.entity';
 
 @Injectable({

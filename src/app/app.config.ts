@@ -1,5 +1,10 @@
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import {
+  provideRouter,
+  InMemoryScrollingOptions,
+  InMemoryScrollingFeature,
+  withInMemoryScrolling
+} from '@angular/router';
 import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community';
 
 import { routes } from './app.routes';
@@ -10,10 +15,21 @@ import {httpErrorResponseInterceptor} from '@/app/interceptors/http-error-respon
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 
+const scrollConfig: InMemoryScrollingOptions = {
+  scrollPositionRestoration: 'top',
+  anchorScrolling: 'enabled'
+}
+
+const inMemoryScrollingFeature: InMemoryScrollingFeature =
+  withInMemoryScrolling(scrollConfig)
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes),
+    provideRouter(
+      routes,
+      inMemoryScrollingFeature
+    ),
     provideHttpClient(withInterceptors([apiUrlInterceptor, authInterceptor, httpErrorResponseInterceptor])),
   ]
 };

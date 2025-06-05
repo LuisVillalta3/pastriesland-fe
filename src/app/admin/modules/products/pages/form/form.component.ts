@@ -81,6 +81,7 @@ export class FormComponent implements OnInit{
       name: ['', [Validators.required]],
       basePrice: ['', [Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/)]],
       active: [true],
+      isOutstanding: [false],
       isComplement: [false],
       units: [0, Validators.required],
       minPortions: [0, Validators.required],
@@ -144,7 +145,8 @@ export class FormComponent implements OnInit{
           minPortions: res.data?.minPortions,
           maxPortions: res.data?.maxPortions,
           active: res.data?.active,
-          units: res.data?.units
+          units: res.data?.units,
+          isOutstanding: res.data?.isOutstanding,
         })
       }
     })
@@ -199,7 +201,8 @@ export class FormComponent implements OnInit{
       maxPortions,
       minPortions,
       basePrice,
-      units
+      units,
+      isOutstanding,
     } = this.form.value;
 
     if (this.id) {
@@ -210,6 +213,7 @@ export class FormComponent implements OnInit{
         isComplement,
         maxPortions,
         minPortions,
+        isOutstanding,
         basePrice,
         units
       }).subscribe({
@@ -231,6 +235,7 @@ export class FormComponent implements OnInit{
       categoriesIds: this.selectedCategories,
       isComplement,
       maxPortions,
+      isOutstanding,
       minPortions,
       basePrice,
       units
