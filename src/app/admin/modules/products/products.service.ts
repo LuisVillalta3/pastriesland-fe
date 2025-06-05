@@ -15,6 +15,9 @@ type ProductDto = {
   maxPortions: number,
   minPortions: number,
   units: number,
+  addons: string,
+  flavors: string,
+  design: string,
   isOutstanding: boolean,
 }
 
@@ -36,6 +39,9 @@ export class ProductsService {
       minPortions,
       units,
       isOutstanding,
+      addons,
+      flavors,
+      design
     }: ProductDto
   ) {
     return this.adminHttpClient.post<HttpResponse<ProductEntity>>(URL, {
@@ -47,7 +53,10 @@ export class ProductsService {
       maxPortions,
       minPortions,
       isOutstanding,
-      units
+      units,
+      addons,
+      flavors,
+      design
     })
   }
 
@@ -63,6 +72,9 @@ export class ProductsService {
       minPortions,
       units,
       isOutstanding,
+      addons,
+      flavors,
+      design
     }: ProductDto
   ) {
     return this.adminHttpClient.put<HttpResponse<ProductEntity>>(`${URL}/${id}`, {
@@ -74,7 +86,10 @@ export class ProductsService {
       isComplement,
       maxPortions,
       minPortions,
-      units
+      units,
+      addons,
+      flavors,
+      design
     })
   }
 

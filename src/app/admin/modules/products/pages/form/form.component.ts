@@ -85,7 +85,10 @@ export class FormComponent implements OnInit{
       isComplement: [false],
       units: [0, Validators.required],
       minPortions: [0, Validators.required],
-      maxPortions: [0, Validators.required]
+      maxPortions: [0, Validators.required],
+      addons: [''],
+      flavors: [''],
+      design: [''],
     });
   }
 
@@ -147,6 +150,9 @@ export class FormComponent implements OnInit{
           active: res.data?.active,
           units: res.data?.units,
           isOutstanding: res.data?.isOutstanding,
+          addons: res.data?.addons,
+          flavors: res.data?.flavors,
+          design: res.data?.design,
         })
       }
     })
@@ -203,6 +209,9 @@ export class FormComponent implements OnInit{
       basePrice,
       units,
       isOutstanding,
+      addons,
+      flavors,
+      design
     } = this.form.value;
 
     if (this.id) {
@@ -215,7 +224,10 @@ export class FormComponent implements OnInit{
         minPortions,
         isOutstanding,
         basePrice,
-        units
+        units,
+        addons,
+        flavors,
+        design
       }).subscribe({
         next: (res) => {
           this.pageContext.setBreadcrumbs(editBcList(name || ''));
@@ -238,7 +250,10 @@ export class FormComponent implements OnInit{
       isOutstanding,
       minPortions,
       basePrice,
-      units
+      units,
+      addons,
+      flavors,
+      design
     }).subscribe({
       next: async (res) => {
         this.saveImages(res.data!.id!)

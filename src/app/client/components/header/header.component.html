@@ -14,10 +14,12 @@
         {{ isLoggedIn ? 'Mi cuenta' : 'Iniciar sesión' }}
       </a>
 
-      <a href="" class="carrito-btn">
+      <a (click)="showCart()" class="carrito-btn">
         <img src="assets/icons/canasta.svg" alt="Canasta" />
 
         <span>Ver mi Carrito</span>
+
+        <i *ngIf="productsCount">{{productsCount}}</i>
       </a>
 
       <section class="links">
