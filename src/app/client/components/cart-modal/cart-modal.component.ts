@@ -6,6 +6,7 @@ import {Subscription} from 'rxjs';
 import {CurrencyPipe, NgForOf} from '@angular/common';
 import {CartItemComponent} from '@client/components/cart-item/cart-item.component';
 import {NotificationService} from '@services/notification.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-cart-modal',
@@ -26,7 +27,8 @@ export class CartModalComponent implements OnInit, OnDestroy {
   constructor(
     private dialogRef: MatDialogRef<CartModalComponent>,
     private cartService: CartService,
-    private notification: NotificationService
+    private notification: NotificationService,
+    private router: Router
   ) {}
 
   close() {
@@ -63,5 +65,10 @@ export class CartModalComponent implements OnInit, OnDestroy {
 
   removeProduct(productId: string) {
     this.cartService.removeProductFromCart(productId);
+  }
+
+  async checkout() {
+    await this.router.navigate(['checkout'])
+    this.close()
   }
 }
