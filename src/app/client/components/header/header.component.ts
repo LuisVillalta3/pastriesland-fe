@@ -1,5 +1,5 @@
 import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
-import {RouterModule} from '@angular/router';
+import {ActivatedRoute, RouterModule} from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
 import {LoginModalComponent} from '@client/components/login-modal/login-modal.component';
 import {CookiesService} from '@services/cookies.service';
@@ -31,7 +31,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private dialog: MatDialog,
     private cookieService: CookiesService,
     private cartService: CartService,
-    private notification: NotificationService
+    private notification: NotificationService,
+    private route: ActivatedRoute,
   ) {}
 
   toggleShowNav() {
@@ -54,6 +55,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      if (params['login'] && params['login'] === 'true' && !this.isLoggedIn) {
+        this.openLoginModal();
+      }
+    })
+
     this.sub = this.cookieService.clientToken$.subscribe(
       token => this.isLoggedIn = !!token
     )
