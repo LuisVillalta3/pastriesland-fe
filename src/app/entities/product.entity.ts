@@ -18,4 +18,8 @@ export class ProductEntity extends BaseEntity {
   // CATEGORIES
   categories: CategoryEntity[] = []
   categoriesIds: string[] = []
+
+  addons: string = '';
+  flavors: string = '';
+  design: string = '';
 }

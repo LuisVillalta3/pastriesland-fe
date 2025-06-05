@@ -52,15 +52,16 @@ p {
 }
 
 .pink-btn,
-.purple-btn {
+.purple-btn,
+.white-btn {
   background: #F75590;
   display: inline-block;
+  font-weight: bold;
   padding: 10px 1.5rem;
   color: #FFF5E1 !important;
   border-radius: 20px;
   text-decoration: none;
   border: 2px solid #F75590;
-  font-weight: 500;
   font-family: "Playfair Display", serif;
   cursor: pointer;
   transition: .2s all ease;
@@ -301,4 +302,15 @@ p {
 .pink-checkbox.mat-mdc-checkbox-checked .mdc-checkbox__background {
   background-color: #F75590 !important;
   border-color: #F75590 !important;
+}
+
+.white-btn {
+  background: white;
+  color: #F75590 !important;
+
+  &:hover {
+    background: #9747FF;
+    color: white !important;
+    border-color: #9747FF;
+  }
 }

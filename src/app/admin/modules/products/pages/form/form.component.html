@@ -108,6 +108,42 @@
         (selectedKeysChange)="onSelectionChanged($event)"
       />
 
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Diseño</mat-label>
+        <input
+          matInput
+          placeholder="Escribe una descripción del diseño del producto"
+          formControlName="design"
+          required
+        />
+
+        <mat-hint>Introduce los sabores del producto separados por coma</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Sabores</mat-label>
+        <input
+          matInput
+          placeholder="Introduce los sabores del producto separados por coma"
+          formControlName="flavors"
+          required
+        />
+
+        <mat-hint>Introduce los sabores del producto separados por coma</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Complementos</mat-label>
+        <input
+          matInput
+          placeholder="Introduce los complementos del producto separados por coma"
+          formControlName="addons"
+          required
+        />
+
+        <mat-hint>Introduce los complementos del producto separados por coma</mat-hint>
+      </mat-form-field>
+
       <hr>
 
       <h3>Imágenes del producto</h3>
