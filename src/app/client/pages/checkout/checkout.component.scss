@@ -112,3 +112,29 @@ h4 {
   font-size: 2rem;
   margin: 0 0 1rem;
 }
+
+.flex {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.add-address-btn {
+  background: transparent;
+  color: #565656;
+  font-weight: bold;
+  border-radius: 10px;
+  border: 2px solid #565656;
+  padding: 4px 5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  cursor: pointer;
+
+  &:hover {
+    background: #F75590;
+    color: white;
+    border-color: #F75590;
+  }
+}

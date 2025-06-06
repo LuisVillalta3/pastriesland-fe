@@ -55,15 +55,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.sub = this.cookieService.clientToken$.subscribe(
+      token => this.isLoggedIn = !!token
+    )
+
     this.route.queryParams.subscribe(params => {
       if (params['login'] && params['login'] === 'true' && !this.isLoggedIn) {
         this.openLoginModal();
       }
     })
-
-    this.sub = this.cookieService.clientToken$.subscribe(
-      token => this.isLoggedIn = !!token
-    )
 
     this.cartSub = this.cartService.cartProducts$.subscribe(
       products => this.currentCart = products

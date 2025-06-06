@@ -14,20 +14,19 @@
       </div>
 
       <section *ngIf="!pickUp" class="addresses">
-        <h4>
-          <mat-icon>home</mat-icon>
-          Dirección de envío
-        </h4>
+        <div class="flex">
+          <h4>
+            <mat-icon>home</mat-icon>
+            Dirección de envío
+          </h4>
+          <button class="add-address-btn" (click)="createAddress()">
+            <mat-icon>add_circle</mat-icon>
+            Agregar dirección
+          </button>
+        </div>
         <div class="addresses-grid">
 
           <!-- ADDRESS ITEM -->
-          <mat-form-field appearance="outline" class="w-full">
-            <mat-label>Dirección de envío</mat-label>
-            <input
-              matInput
-            />
-          </mat-form-field>
-
         </div>
       </section>
 
