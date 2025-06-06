@@ -12,6 +12,9 @@ import {Subscription} from 'rxjs';
 import {CartService} from '@client/services/cart.service';
 import {NotificationService} from '@services/notification.service';
 import {Router} from '@angular/router';
+import {MatDialog} from '@angular/material/dialog';
+import {CartModalComponent} from '@client/components/cart-modal/cart-modal.component';
+import {AddressFormModalComponent} from '@client/components/address-form-modal/address-form-modal.component';
 
 @Component({
   selector: 'app-checkout',
@@ -33,6 +36,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
     private cartService: CartService,
     private notification: NotificationService,
     private router: Router,
+    private dialog: MatDialog,
   ) {}
 
 
@@ -90,5 +94,15 @@ export class CheckoutComponent implements OnInit, OnDestroy {
 
   get totalOrderPrice() {
     return this.totalPrice + this.deliveryPrice;
+  }
+
+  createAddress() {
+    const dialogRef = this.dialog.open(AddressFormModalComponent, {
+      minWidth: '250px',
+      maxWidth: '750px',
+      width: 'calc(100% - 2rem)',
+    })
+
+    dialogRef.afterClosed().subscribe()
   }
 }
